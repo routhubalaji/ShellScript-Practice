@@ -17,8 +17,8 @@ VALIDATE() {
         echo "ERROR:: $2 Installation failed"
         exit 1
     else
-        echo "SUCCESS:: Mysql Installation successful"    
-        exit 0
+        echo "SUCCESS:: $2 Installation successful"    
+        # exit 0
     fi 
 }
 
