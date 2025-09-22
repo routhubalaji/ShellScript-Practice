@@ -20,10 +20,10 @@ fi
 VALIDATE() {
     if [ $1 -ne 0 ];
     then
-        echo "Installating $2... $R failed $N"
+        echo "Installing $2... $R Failed $N"
         exit 1
     else
-        echo "Installating $2... $G failed $N"    
+        echo "Installing $2... $G Success $N"    
         # exit 0  If we uncomment this line then remaining 2 pacakges will not be installed.
     fi 
 }
@@ -34,6 +34,8 @@ if [ $? -ne 0 ];
 then
     dnf install mysql -y
     VALIDATE $? "Mysql"
+else
+    echo -e "MySQL already exist ... $Y SKIPPING $N"    
 fi    
 
 dnf list installed nginx
@@ -41,6 +43,8 @@ if [ $? -ne 0 ];
 then
     dnf install nginx -y
     VALIDATE $? "nginx"
+else
+    echo -e "Nginx already exist ... $Y SKIPPING $N"        
 fi  
 
 
@@ -49,5 +53,7 @@ if [ $? -ne 0 ];
 then
     dnf install python3 -y
     VALIDATE $? "Python3"
-fi  
+else
+    echo -e "python3 already exist ... $Y SKIPPING $N"    
+fi
 
