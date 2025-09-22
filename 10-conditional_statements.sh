@@ -23,3 +23,8 @@ echo "Given Number $Number is equal to 10"
 else
 echo "Given Number $Number is not equal to 10"
 fi
+
+
+# -le
+# -ge
+# -ne
