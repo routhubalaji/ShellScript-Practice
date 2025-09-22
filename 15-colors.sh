@@ -2,10 +2,16 @@
 
 
 USERID=$(id -u)
-  
+
+R="\e[31m"
+G="\e[32m"
+Y="\e[33m"
+N="\e[0m"
+
+
 if [ $USERID -ne 0 ];
 then
-    echo "ERROR:: Please run the script with root privilege"
+    echo -e "$R ERROR:: Please run the script with root privilege... $N"
     exit 1
 fi
 
@@ -14,10 +20,10 @@ fi
 VALIDATE() {
     if [ $1 -ne 0 ];
     then
-        echo "ERROR:: $2 Installation failed"
+        echo "Installating $2... $R failed $N"
         exit 1
     else
-        echo "SUCCESS:: $2 Installation successful"    
+        echo "Installating $2... $G failed $N"    
         # exit 0  If we uncomment this line then remaining 2 pacakges will not be installed.
     fi 
 }
