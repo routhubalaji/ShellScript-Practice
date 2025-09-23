@@ -13,9 +13,13 @@ N="\e[0m"
 
 LOGS_FOLDER="/var/log/shell-script"
 SCRIPT_NAME=$( echo $0 | cut -d "." -f1 )
-echo "$SCRIPT_NAME"
 LOG_FILE="$LOGS_FOLDER/$SCRIPT_NAME.log" # /var/log/shell-script/16-logs.log
-echo "log file name $LOG_FILE"
+
+
+
+# LOGS_FOLDER="/var/log/shell-script"
+# SCRIPT_NAME=$( echo $0 | cut -d "." -f1 )
+# LOG_FILE="$LOGS_FOLDER/$SCRIPT_NAME.log" # /var/log/shell-script/16-logs.log
 
 mkdir -p $LOGS_FOLDER
 
@@ -40,30 +44,30 @@ VALIDATE() {
 }
 
 
-dnf list installed mysql &>> LOGS_FILE
+dnf list installed mysql &>> $LOG_FILE
 if [ $? -ne 0 ];
 then
-    dnf install mysql -y &>> LOGS_FILE
+    dnf install mysql -y &>> $LOG_FILE
     VALIDATE $? "Mysql"
 else
     echo -e "MySQL already exist ... $Y SKIPPING $N"    
 fi    
 
-dnf list installed nginx &>> LOGS_FILE
+dnf list installed nginx &>> $LOG_FILE
 if [ $? -ne 0 ];
 then
-    dnf install nginx -y &>> LOGS_FILE
+    dnf install nginx -y &>> $LOG_FILE
     VALIDATE $? "nginx"
 else
     echo -e "Nginx already exist ... $Y SKIPPING $N"        
 fi  
 
 
-dnf list installed python3 &>> LOGS_FILE
+dnf list installed python3 &>>  $LOG_FILE
 if [ $? -ne 0 ];
 then
     dnf install python3 -y
-    VALIDATE $? "Python3" &>> LOGS_FILE
+    VALIDATE $? "Python3" &>>  $LOG_FILE
 else
     echo -e "python3 already exist ... $Y SKIPPING $N"    
 fi
