@@ -95,6 +95,7 @@ VALIDATE(){ # functions receive inputs through args just like shell script args
         exit 1
     else
         echo -e "Installing $2 ... $G SUCCESS $N" 
+    fi    
 }
 
 dnf list installed mysql &>>$LOG_FILE
