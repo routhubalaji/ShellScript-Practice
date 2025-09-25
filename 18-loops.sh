@@ -70,7 +70,7 @@ VALIDATE() {
 
 for package in $@
 do
-    echo $pacakge
+    echo $package
 done
 
 
