@@ -1,8 +1,9 @@
 
 #!bin/bash
 
-
-for i in {1..20}
+NUM1=$1
+NUM2=$2
+for i in {$NUM1..$NUM2}
 do
     echo $i
 done
