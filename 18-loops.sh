@@ -69,7 +69,7 @@ VALIDATE() {
 
 echo "Enter the package names you want to install: "
 read -a packages
-for package in $@
+for package in "${packages[@]}"
 do
 
     # echo "Package name is: $package"-->To pring package names
