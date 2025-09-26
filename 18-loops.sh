@@ -68,6 +68,7 @@ VALIDATE() {
 # fi
 
 echo "Enter the package names you want to install: "
+read -a packages
 for package in $@
 do
 
