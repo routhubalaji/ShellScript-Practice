@@ -67,7 +67,7 @@ VALIDATE() {
 #     echo -e "python3 already exist ... $Y SKIPPING $N" | tee -a $LOG_FILE    
 # fi
 
-
+echo "Enter the package names you want to install: "
 for package in $@
 do
 
