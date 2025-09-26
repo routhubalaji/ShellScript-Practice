@@ -11,12 +11,12 @@ N="\e[0m"
 
 
 
-# LOGS_FOLDER="/var/log/shell-script"
-# SCRIPT_NAME=$( echo $0 | cut -d "." -f1 )
-# LOG_FILE="$LOGS_FOLDER/$SCRIPT_NAME.log" # /var/log/shell-script/16-logs.log
+LOGS_FOLDER="/var/log/shell-script"
+SCRIPT_NAME=$( echo $0 | cut -d "." -f1 )
+LOG_FILE="$LOGS_FOLDER/$SCRIPT_NAME.log" # /var/log/shell-script/16-logs.log
 
 
-# mkdir -p $LOGS_FOLDER
+mkdir -p $LOGS_FOLDER
 
 echo "Script started executed at: $(date)" 
 if [ $USERID -ne 0 ];
@@ -71,16 +71,16 @@ VALIDATE() {
 for package in $@
 do
 
-    echo "Package name is: $package"
-    #  dnf list installed $package &>>$LOG_FILE
+    # echo "Package name is: $package"-->To pring package names
+     dnf list installed $package &>>$LOG_FILE
 
     # # if exit status is 0, already installed. -ne 0 need to install it
-    # if [ $? -ne 0 ]; then
-    #     dnf install $package -y &>>$LOG_FILE
-    #     VALIDATE $? "$package"
-    # else
-    #     echo -e "$package already installed ... $Y SKIPPING $N"
-    # fi
+    if [ $? -ne 0 ]; then
+        dnf install $package -y &>>$LOG_FILE
+        VALIDATE $? "$package"
+    else
+        echo -e "$package already installed ... $Y SKIPPING $N"
+    fi
 done
 
 
